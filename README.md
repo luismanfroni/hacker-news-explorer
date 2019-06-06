@@ -11,9 +11,9 @@ API:
 https://github.com/HackerNews/API
 
 Pacotes utilizados:
-https://pub.dev/packages/flutter_bloc
-https://pub.dev/packages/bottom_navy_bar
-https://pub.dev/packages/shimmer
-https://pub.dev/packages/flutter_open_browser
-https://pub.dev/packages/equatable
+ - https://pub.dev/packages/flutter_bloc
+ - https://pub.dev/packages/bottom_navy_bar
+ - https://pub.dev/packages/shimmer
+ - https://pub.dev/packages/flutter_open_browser
+ - https://pub.dev/packages/equatable
 
