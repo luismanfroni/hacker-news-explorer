@@ -70,7 +70,7 @@ class _StoryState extends State<Stories> {
                         if (state is StoryLoading)
                             return StoriesLoading();
                             
-                        if (state is StoryLoaded)
+                        if (state is StoryLoaded)     
                             return StoriesLoaded(
                                 onRefresh: () {
                                     _storyBloc.dispatch(RefreshStories(category: category));
@@ -78,18 +78,21 @@ class _StoryState extends State<Stories> {
                                 },
                                 stories: state.stories,
                             );
+                        
 
-                        if (state is StoryError)
+                        if (state is StoryError) {
+                            final exception = state.exception;
                             return StoriesError(
+                                exception: exception,
                                 onRefresh: () {
                                     _storyBloc.dispatch(RefreshStories(category: category));
                                     return _refreshCompleter.future;
                                 }
                             );
+                        }
                     }
                 )
             ,)
-
         );
     }
 }

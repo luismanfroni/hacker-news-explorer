@@ -16,25 +16,25 @@ class StoryBloc extends Bloc<StoryEvent, StoryState> {
         : assert(storyRepository != null);
 
     @override
-    StoryState get initialState => StoryEmpty(ApiCategory.New);
+    StoryState get initialState => StoryEmpty(category: ApiCategory.New);
 
     @override
     Stream<StoryState> mapEventToState(StoryEvent event) async* {
         if (event is FetchStories) {
-            yield StoryLoading(event.category);
             try {
+                yield StoryLoading(category: event.category);
                 List<Story> stories = await storyRepository.getStories(event.category);
                 yield StoryLoaded(stories: stories, category: event.category);
-            } catch (_) {
-                yield StoryError(event.category);
+            } catch (ex) {
+                yield StoryError(exception: ex, category: event.category);
             }
         } else if (event is RefreshStories) {
             try {
-                yield StoryLoading(event.category);
+                yield StoryLoading(category: event.category);
                 final List<Story> stories = await storyRepository.getStories(event.category);
                 yield StoryLoaded(stories: stories, category: event.category);
-            } catch (_) {
-                yield currentState;
+            } catch (ex) {
+                yield StoryError(exception: ex, category: event.category);
             }
         }
     }

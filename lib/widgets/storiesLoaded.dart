@@ -26,17 +26,3 @@ class _StoriesLoadedState extends State<StoriesLoaded> {
         );
     }
 }
-/*
-final stories = state.stories;
-                        return RefreshIndicator(
-                            onRefresh: () {
-                                _storyBloc.dispatch(RefreshStories(category: category));
-                                return _refreshCompleter.future;
-                            },
-                            child: ListView(
-                                children: stories.map( (story) => 
-                                    
-                                ).toList()
-                            )
-                        );
- */

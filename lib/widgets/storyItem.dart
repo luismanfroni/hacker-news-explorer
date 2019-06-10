@@ -87,18 +87,7 @@ class _StoryItemState extends State<StoryItem> {
                                                                 style: TextStyle(
                                                                     color: Colors.grey[500],
                                                                 ),
-                                                            ),
-                                                            Padding(
-                                                                padding: EdgeInsets.only(
-                                                                    left: 16.0
-                                                                ),
-                                                            ),
-                                                            Text(
-                                                                "Type: " + story.type.toString(),
-                                                                style: TextStyle(
-                                                                    color: Colors.grey[500],
-                                                                ),
-                                                            ),
+                                                            )
                                                         ],
                                                     ),
                                                 ),
@@ -108,7 +97,7 @@ class _StoryItemState extends State<StoryItem> {
                                             SettingModel settingModel = SettingModel(
                                                     url: widget.story.url,//Your url
                                                     intCaseShowError: SettingModel.SHOW_TOAST,//Show dialog or toast if error
-                                                    messageErrorShow: "Não foi possível abrir o link.");//Your error message.
+                                                    messageErrorShow: "Could not open link.");//Your error message.
                                             FlutterOpenBrowser.openBrowserSelect(settingModel: settingModel);
                                         },
                                     ),
@@ -119,18 +108,5 @@ class _StoryItemState extends State<StoryItem> {
                 ), ////
             ),
         );
-        // ListTile(
-        //     title: Text(widget.story.title),
-        //     subtitle: Text(widget.story.by),
-        //     trailing: Text(widget.story.id.toString()),
-        //     onTap: () {
-        //         SettingModel settingModel = SettingModel(
-        //                 url: widget.story.url,//Your url
-        //                 intCaseShowError: SettingModel.SHOW_TOAST,//Show dialog or toast if error
-        //                 messageErrorShow: "Não foi possível abrir o link.");//Your error message.
-        //         FlutterOpenBrowser.openBrowserSelect(settingModel: settingModel);
-                
-        //     },
-        // );
     }
 }

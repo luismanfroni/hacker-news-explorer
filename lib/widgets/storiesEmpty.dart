@@ -26,7 +26,7 @@ class _StoriesEmptyState extends State<StoriesEmpty> {
                         Padding(padding: EdgeInsets.only(top: 20.0)),
                         Center(
                             child: Text(
-                                "Conteúdo vazio",
+                                "Empty",
                                 style: TextStyle(
                                     fontSize: 16,
                                     color: Colors.black45
@@ -36,7 +36,7 @@ class _StoriesEmptyState extends State<StoriesEmpty> {
                         Padding(padding: EdgeInsets.only(top: 40.0)),
                         Center(
                             child: Text(
-                                "Puxe para baixo para atualizar!",
+                                "Pull down to refresh!",
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: Colors.black

@@ -16,7 +16,6 @@ class StoryRepository {
         : assert(storyApiClient != null);
 
     Future<List<Story>> getStories(ApiCategory category) async {
-        print("story_repository");
         switch(category) {
             case ApiCategory.Top:
                 return await storyApiClient.fetchTopStories();
@@ -27,8 +26,6 @@ class StoryRepository {
             case ApiCategory.New:
                 return await storyApiClient.fetchNewStories();
                 
-            default:
-                return null;
         }
     }
  

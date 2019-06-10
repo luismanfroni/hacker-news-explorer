@@ -12,7 +12,9 @@ class StoryApiClient {
 
     Future<Story> getStory(BigInt storyId) async {
         final storyUrl = '$baseUrl/item/$storyId.json';
-        var storyResponse = await http.get(Uri.encodeFull(storyUrl), headers: headers);
+        var storyResponse = await http.get(Uri.encodeFull(storyUrl), headers: headers)
+            .timeout(Duration(seconds: 10))
+            .catchError((error) => throw Exception(error.toString()));
             
         if (storyResponse.statusCode != 200)
             throw Exception('Error fetching story $storyId');
@@ -27,7 +29,8 @@ class StoryApiClient {
         List<Story> stories = new List<Story>();
         var storiesResponse = 
             await http.get(Uri.encodeFull(storiesUrl), headers: headers)
-                .timeout(Duration(seconds: 10));
+                .timeout(Duration(seconds: 10))
+                .catchError((error) => throw Exception(error.toString()));
             
         if (storiesResponse.statusCode != 200)
             throw Exception('Error fetching stories <$endpoint>');
@@ -35,12 +38,16 @@ class StoryApiClient {
         List<BigInt> storiesId = 
             (jsonDecode(storiesResponse.body) as List<dynamic>)
                 .map<BigInt>((id) => BigInt.from(id))
-                .toList();
+                .toList()
+                .sublist(0, 30);
         
         final futures = storiesId.map((BigInt id) =>
             getStory(id)
         );
-        stories = await Future.wait(futures);
+
+        stories = await Future
+            .wait(futures)
+            .catchError((error) => throw Exception(error.toString()));
     
         return stories;
     }
